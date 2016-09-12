@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>parent</artifactId>
+    <groupId>ru.vago.blazeDSExample</groupId>
+    <version>next-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <blazeds-version>4.7.2</blazeds-version>
+        <flex-framework-version>4.5.1.21328</flex-framework-version>
+        <jetty-plugin-version>9.3.0.v20150612</jetty-plugin-version>
+        <flexmojos-version>4.0-RC2</flexmojos-version>
+    </properties>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>${jetty-plugin-version}</version>
+                    <configuration>
+                        <webAppSourceDirectory>${project.build.directory}/${project.build.finalName}</webAppSourceDirectory>
+                        <webAppConfig>
+                            <contextPath>/</contextPath>
+                            <descriptor>${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml</descriptor>
+                            <war>${project.build.directory}/${project.build.finalName}</war>
+                            <resourceBases>
+                                <resourceBase>${project.basedir}/src/main/webapp</resourceBase>
+                                <resourceBase>${project.build.directory}/${project.build.finalName}</resourceBase>
+                            </resourceBases>
+                        </webAppConfig>
+                        <scanIntervalSeconds>10</scanIntervalSeconds>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.flexmojos</groupId>
+                    <artifactId>flexmojos-maven-plugin</artifactId>
+                    <version>${flexmojos-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.flex.blazeds</groupId>
+                <artifactId>flex-messaging-core</artifactId>
+                <version>${blazeds-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.adobe.flex.framework</groupId>
+                <artifactId>flex-framework</artifactId>
+                <version>${flex-framework-version}</version>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>flex-mojos-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>flex-mojos-plugin-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
