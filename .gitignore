@@ -1,0 +1,11 @@
+/swiz-example/swizExample.iml
+/swiz-example/parent/*.iml
+/.idea
+/FlexExample.iml
+/blazeds-example/blazeDSExample.iml
+/blazeds-example/local-server/*
+/blazeds-example/local-server/*.iml
+/blazeds-example/parent/*.iml
+/blazeds-example/swf-module/*
+/blazeds-example/swf-module/*.iml
+*.iml

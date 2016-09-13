@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               initialize="init()">
+    <s:Panel title="Example Blaze DS" x="20" y="20">
+        <s:Form id="myForm" width="400">
+            <s:FormItem label="Load hardcode user">
+                <s:Button label="click me" click="loadHardcodeUser()"/>
+                <s:Label text="{resultHardcodeUser}"/>
+            </s:FormItem>
+            <s:FormItem label="Load User">
+                <s:TextInput id="userIdInput"/>
+                <s:Button label="click me" click="loadUserById(int(userIdInput.text))"/>
+                <s:Label text="{resultUser}"/>
+            </s:FormItem>
+        </s:Form>
+    </s:Panel>
+
+    <fx:Script><![CDATA[
+        import mx.controls.Alert;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+
+        import ru.vago.blazeds.example.endpoint.ResourceEndPoint;
+        import ru.vago.blazeds.example.endpoint.ResourceEndPointImpl;
+
+        [Bindable]
+        private var resultHardcodeUser:String;
+        [Bindable]
+        private var resultUser:String;
+
+        private var resourceEndPoint:ResourceEndPoint;
+
+        internal function init():void {
+            resourceEndPoint = new ResourceEndPointImpl();
+        }
+
+        public function loadHardcodeUser():void {
+            resourceEndPoint.loadUser(resultCallbackUserHardcode, faultCallback);
+        }
+
+        public function loadUserById(id:int):void {
+            resourceEndPoint.loadUserById(id, resultCallbackUserById, faultCallback);
+        }
+
+        private function resultCallbackUserHardcode(event:ResultEvent):void {
+            resultHardcodeUser = event.result.name;
+        }
+
+        private function resultCallbackUserById(event:ResultEvent):void {
+            resultUser = event.result.name;
+        }
+
+        private function faultCallback(event:FaultEvent):void {
+            Alert.show(event.toString());
+        }
+        ]]></fx:Script>
+</s:Application>

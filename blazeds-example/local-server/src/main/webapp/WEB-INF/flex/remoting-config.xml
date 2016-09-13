@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service id="remoting-service" class="flex.messaging.services.RemotingService">
+    <adapters>
+        <adapter-definition id="java-object" class="flex.messaging.services.remoting.adapters.JavaAdapter" default="true"/>
+    </adapters>
+
+    <default-channels>
+        <channel ref="amf-channel"/>
+    </default-channels>
+
+    <destination id="ResourceEndPoint">
+        <properties>
+            <source>ru.vago.blazeds.example.ResourceEndPointImpl</source>
+        </properties>
+    </destination>
+</service>
