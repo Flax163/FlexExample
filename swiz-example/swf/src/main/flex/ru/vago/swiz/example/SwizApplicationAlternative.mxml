@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-    xmlns:s="library://ns.adobe.com/flex/spark"
-    xmlns:swiz="http://swiz.swizframework.org"
-    xmlns:bean="ru.vago.swiz.example.bean.*"
-    xmlns:view="ru.vago.swiz.example.view.*">
+<s:Application
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:swiz="http://swiz.swizframework.org"
+        xmlns:bean="ru.vago.swiz.example.bean.*"
+        xmlns:view="ru.vago.swiz.example.view.*">
     <fx:Declarations>
         <swiz:Swiz>
             <swiz:beanProviders>
                 <swiz:BeanProvider>
-                    <bean:BeanProduction/>
+                    <bean:BeanAlternative/>
                     <bean:BeanCommon/>
                 </swiz:BeanProvider>
             </swiz:beanProviders>
