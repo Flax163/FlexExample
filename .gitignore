@@ -9,3 +9,5 @@
 /blazeds-example/swf-module/*
 /blazeds-example/swf-module/*.iml
 *.iml
+/swiz-example/swf/target/classes/*.ser
+/swiz-example/swf/target/*.xml

@@ -12,7 +12,7 @@
     <properties>
         <flex-framework-version>4.5.1.21328</flex-framework-version>
         <flexmojos-version>4.0-RC2</flexmojos-version>
-        <swiz_framework-version>1.4.0</swiz_framework-version>
+        <swiz-framework-version>1.0.0-RC1</swiz-framework-version>
     </properties>
 
     <build>
@@ -39,7 +39,7 @@
             <dependency>
                 <groupId>org.swizframework</groupId>
                 <artifactId>swizframework</artifactId>
-                <version>${swiz_framework-version}</version>
+                <version>${swiz-framework-version}</version>
                 <type>swc</type>
             </dependency>
         </dependencies>
@@ -49,6 +49,15 @@
         <repository>
             <id>flex-mojos-repository</id>
             <url>http://repository.sonatype.org/content/groups/flexgroup</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository><repository>
+            <id>open-source-adobe</id>
+            <url>http://opensource.adobe.com/svn/opensource/cairngorm3/maven-repository/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
