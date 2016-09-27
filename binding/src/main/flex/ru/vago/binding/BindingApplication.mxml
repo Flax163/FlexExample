@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark">
+    <s:Panel title="Example Blaze DS" x="20" y="20">
+        <s:Form id="myForm" width="400">
+            <s:FormItem label="Bindable">
+                <s:TextInput text="{bindableString}"/>
+                <s:Label text="{bindableString}"/>
+            </s:FormItem>
+            <s:FormItem label="No Bindable">
+                <s:TextInput text="{noBindString}"/>
+                <s:Label text="{noBindString}"/>
+            </s:FormItem>
+        </s:Form>
+    </s:Panel>
+
+    <fx:Script><![CDATA[
+        [Bindable]
+        private var bindableString:String;
+
+        private var noBindString:String;
+
+
+        ]]></fx:Script>
+</s:Application>

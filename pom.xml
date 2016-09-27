@@ -14,6 +14,7 @@
     <modules>
         <module>blazeds-example</module>
         <module>swiz-example</module>
+        <module>binding</module>
     </modules>
 
 </project>
