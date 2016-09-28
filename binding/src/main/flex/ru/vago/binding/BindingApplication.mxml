@@ -1,25 +1,43 @@
 <?xml version="1.0"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
                xmlns:s="library://ns.adobe.com/flex/spark">
-    <s:Panel title="Example Blaze DS" x="20" y="20">
-        <s:Form id="myForm" width="400">
+    <fx:Script><![CDATA[
+        import mx.binding.utils.BindingUtils;
+
+        [Bindable]
+        public var bindingMXML:String;
+
+        public var noBinding:String = "";
+
+        public function updateString(val:String):void {
+            label4.text = val;
+        }
+
+        internal function init():void
+        {
+            BindingUtils.bindSetter(updateString, binding4, "text");
+        }
+
+        ]]></fx:Script>
+    <fx:Binding source="{binding2.text}" destination="label2.text"/>
+    <s:Panel title="Example Binding" x="20" y="20">
+        <s:Form id="myForm" width="600">
             <s:FormItem label="Bindable">
-                <s:TextInput text="{bindableString}"/>
-                <s:Label text="{bindableString}"/>
+                <s:TextInput id="binding1" change="bindingMXML = binding1.text"/>
+                <s:Label text="{bindingMXML}"/>
+            </s:FormItem>
+            <s:FormItem label="Bindable Tag">
+                <s:TextInput id="binding2"/>
+                <s:Label id="label2"/>
+            </s:FormItem>
+            <s:FormItem label="BindingUtils">
+                <s:TextInput id="binding4" initialize="init()"/>
+                <s:Label id="label4"/>
             </s:FormItem>
             <s:FormItem label="No Bindable">
-                <s:TextInput text="{noBindString}"/>
-                <s:Label text="{noBindString}"/>
+                <s:TextInput id="binding3" change="noBinding = binding3.text"/>
+                <s:Label text="{noBinding}"/>
             </s:FormItem>
         </s:Form>
     </s:Panel>
-
-    <fx:Script><![CDATA[
-        [Bindable]
-        private var bindableString:String;
-
-        private var noBindString:String;
-
-
-        ]]></fx:Script>
 </s:Application>
